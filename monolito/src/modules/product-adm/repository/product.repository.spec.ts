@@ -23,7 +23,7 @@ describe("Product repository unit tests", () => {
         await sequelize.close();
     });
 
-    it("should create a product", async () => {
+    it("repository should create a product", async () => {
         const productRepository = new ProductRepository();
 
         const props = {
@@ -51,7 +51,7 @@ describe("Product repository unit tests", () => {
         expect(props.stock).toEqual(productDb.dataValues.stock);
     });
 
-    it("should find a product", async () => {
+    it("repository should find a product", async () => {
         const productRepository = new ProductRepository();
 
         const props = {
