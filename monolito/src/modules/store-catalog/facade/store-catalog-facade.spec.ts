@@ -9,19 +9,17 @@ describe("Product facade unit tests", () => {
     beforeEach(async () => {
         sequelize = new Sequelize({
             dialect: 'sqlite',
-            storage: ':memory',
-            logging: false,
-            sync: { force: true }
+            storage: ':memory:',
+            logging: false
         });
 
         sequelize.addModels([ProductModel]);
-        await sequelize.sync();
+        await sequelize.sync({ force: true }); // Garante que as tabelas sejam recriadas
     });
 
     afterEach(async () => {
         await sequelize.close();
     });
-
 
     it("repository should find all products facade", async () => {
         await ProductModel.create({

@@ -24,13 +24,13 @@ describe("Order repository test", () => {
             sync: { force: true },
         });
 
-        await sequelize.addModels([
+        sequelize.addModels([
             CustomerModel,
             OrderModel,
             OrderItemModel,
             ProductModel,
         ]);
-        await sequelize.sync();
+        await sequelize.sync({ force: true });
     });
 
     afterEach(async () => {
