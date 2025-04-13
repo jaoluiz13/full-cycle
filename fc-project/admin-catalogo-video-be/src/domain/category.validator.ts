@@ -1,6 +1,6 @@
 import { MaxLength, IsString, IsNotEmpty, IsOptional, IsBoolean } from 'class-validator';
-import { isBoolean } from 'lodash';
 import { Category } from './category.entity';
+import { ClassValidatorFields } from '../shared/domain/validators/class-validator-fields';
 
 class CategoryRules {
 
@@ -23,10 +23,16 @@ class CategoryRules {
 
 }
 
-export class CategoryValidator {
+export class CategoryValidator extends ClassValidatorFields<CategoryRules> {
 
-    validate(entity: Category) {
+    /*validate(entity: Category) {
+        return super.validate(new CategoryRules(entity));
+        return true;
+    }*/
 
+}
+export class CategoryValidatorFactory {
+    static create() {
+        return new CategoryValidator();
     }
-
 }
